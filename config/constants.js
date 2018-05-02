@@ -5,7 +5,7 @@ configData.JWTPrivateKey = "f95Zh7QZ939o6lmp73xM88kXI2T9yJ6g5";
 
 configData.defaultAdmin = [{
     "name": "SuperAdmin",
-    "email": "digvijay@creatiosoft.com",
+    "email": "nishank@creatiosoft.com",
     "userName": "Admin",
     "gender": "Male",
     "dob": 3456345,
