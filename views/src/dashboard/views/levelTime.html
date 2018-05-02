@@ -1,0 +1,84 @@
+
+
+<!-- BEGIN PAGE HEADER-->
+<h1 class="page-title"> </h1>
+<div class="page-bar" >
+  <ul class="page-breadcrumb">
+    <li>
+      <i class="icon-home"></i>
+      <a ui-sref="dashboard">Home</a>
+      <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+      <span>Level Time Management</span>
+      <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+      <span>Level Time</span>
+    </li>
+  </ul>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN SAMPLE TABLE PORTLET-->
+    <div class="portlet box green" >
+      <div class="portlet-title">
+        <div class="caption">
+          Level Time
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form class="form-horizontal" role="form" name="levelTimeForm" ng-submit="submit()">
+        <div class="form-group" ng-class="{ 'has-error' : levelTimeForm.isLevelTime.$invalid && !levelTimeForm.isLevelTime.$pristine}">
+          <label class="col-md-3 control-label">Level Time Status :</label>
+          <div class="col-md-5">
+            <select class="form-control" name="isLevelTime" ng-model="formData.isLevelTime" ng-change="checkTime();" required>
+              <option value="" style="display:none;">Select Status</option>
+              <option value="true">ON</option>
+              <option value="false" ng-selected="true" >OFF</option>
+            </select>
+            <p ng-show="levelTimeForm.isLevelTime.$invalid && !levelTimeForm.isLevelTime.$pristine" class="help-block">Please select a Option.</p>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : levelTimeForm.isLevelTime.$invalid && !levelTimeForm.isLevelTime.$pristine}">
+          <label class="col-md-3 control-label">Best Time :</label>
+          <div class="col-md-5">
+            <select class="form-control" name="isBestTime" ng-model="formData.isBestTime" required>
+              <option value="" style="display:none;">Select Status</option>
+              <option value="true">ON</option>
+              <option value="false" ng-selected="true" >OFF</option>
+            </select>
+            <p ng-show="levelTimeForm.isBestTime.$invalid && !levelTimeForm.isBestTime.$pristine" class="help-block">Please select a Option.</p>
+          </div>
+        </div>
+        <table class="table table-bordered table-striped table-condensed flip-content" name="dataTable" ng-if="toggleTime" >
+          <thead class="flip-content">
+            <tr>
+              <th width="30%"> Level </th>
+              <th width="30%"> Time(sec.) </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="list in levelList" >
+              <td > <input type="number" name="tableName"  class="form-control" ng-model= "list.level" ng-disabled="true"> </td>
+              <td> <input type="number" id="textbox" class="form-control" ng-model= "list.time" id="textbox" > </td>
+          </tbody>
+        </table>
+
+        <div class="form-actions">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-12">
+              <button type="button" ui-sref="dashboard" class="btn default">Cancel</button>&nbsp&nbsp&nbsp&nbsp
+              <button type="submit" class="btn green" ng-disabled="levelTimeForm.$invalid">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- END SAMPLE TABLE PORTLET-->
+</div>
+</div>
+

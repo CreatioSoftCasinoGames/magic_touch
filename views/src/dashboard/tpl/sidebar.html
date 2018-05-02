@@ -1,0 +1,296 @@
+<div class="page-sidebar navbar-collapse collapse">
+    <!-- BEGIN SIDEBAR MENU -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        <li class="start">
+            <a ui-sref="dashboard">
+                <i class="icon-home"></i>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+       <!--  <li class="start">
+            <a ui-sref="accountDetails">
+                <i class="icon-home"></i>
+                <span class="title">Accounts</span>
+            </a>
+        </li> -->
+       <!--  <li class="nav-item">
+            <a ui-sref="spamWords">
+                <i class="icon-home"></i>
+                <span class="title">Spam Words</span>
+            </a>
+        </li> -->
+        <li class="nav-item" ng-repeat="value in moduleAccess" ng-if="value.status">
+            <!-- <a ui-sref={{value.route}} class="nav-link nav-toggle" > -->
+            <a href="javascript:;" class="nav-link nav-toggle" >
+                <i class={{value.iconClass}}></i>
+                <span class="title">{{value.name}}</span>
+                <span class="arrow " ng-if="value.subModule"></span>
+            </a>
+            <ul class="sub-menu" ng-if="value.subModule" >
+                <li ng-repeat="subValue in value.subModule" ng-if="subValue.status" >
+                    <a ng-if="!subValue.route">
+                    <a ui-sref={{subValue.route}}>
+                        <i class={{subValue.iconClass}}></i> {{subValue.name}}</span>
+                    </a>
+                    <ul class="sub-menu" ng-repeat="data in subValue.subModule" ng-if="data.status" >
+                        <li>
+                            <a ui-sref={{data.route}}>
+                                <i class="icon-puzzle"></i> {{data.name}}</span>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </li>
+            </ul>
+        </li>
+   <!--      <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Player Report Management</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="findPlayerReport" >
+                        <i class="icon-puzzle"></i> Player Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="findPlayerChart" >
+                        <i class="icon-puzzle"></i>Player Chart Rakes</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="findPlayerChartGamesPlayed" >
+                        <i class="icon-puzzle"></i>Player Chart Games Played</span>
+                    </a>
+                </li>
+               
+            </ul>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Customer Support Management</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="profileDetailsPlayer" >
+                        <i class="icon-puzzle"></i> Profile Details</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="gameProfileDataCustomerSupport" >
+                        <i class="icon-puzzle"></i>Game Profile Details</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="transactionHistoryCustomerSupport" >
+                        <i class="icon-puzzle"></i>Transaction History</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="gameHistoryCustomerSupport" >
+                        <i class="icon-puzzle"></i>Cash Game History</span>
+                    </a>
+                </li>
+            </ul>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Direct Cashout Management</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                    <li class="start">
+                        <a ui-sref="cashoutDirect">
+                            <i class="icon-home"></i>Cash Out Direct</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="directCashoutHistory" >
+                            <i class="icon-puzzle"></i>Direct Cashout History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="cashoutSubAffiliate" >
+                            <i class="icon-puzzle"></i>Cashout SubAffiliate</span>
+                        </a>
+                    </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Cashout Report </span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                    <li class="start">
+                        <a ui-sref="dailyCashoutDataReport">
+                            <i class="icon-home"></i>Daily Cashout</span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="monthlyCashoutDataReport" >
+                            <i class="icon-puzzle"></i>Monthly Cashout</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="dailyCashoutChart" >
+                            <i class="icon-puzzle"></i>Daily Cashout Chart</span>
+                        </a>
+                    </li>
+            </ul>
+        </li>
+         -->
+
+       
+<!-- ************************* SCRATCH CARD MANAGEMENT START ******************************** -->
+
+
+        <!-- <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title">Rake Analytics</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="rakeByDate">
+                        <i class="icon-check"></i> Rake Summary by Date</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="rakeByAffiliateOrPlayer">
+                        <i class="icon-check"></i> Rake Summary by Affiliate/Player </span>
+                    </a>
+                </li><li>
+                    <a ui-sref="rakeDatewise">
+                        <i class="icon-check"></i> Rake Summary Datewise </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="listOfAffiliate">
+                        <i class="icon-check"></i> Rake Summary by Cash Table </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="listUsers">
+                        <i class="icon-check"></i> Rake Summary by time of day </span>
+                    </a>
+                </li>
+            </ul>
+        </li> -->
+
+<!-- ************************* SCRATCH CARD MANAGEMENT END ******************************** -->
+       <!--  <li class="nav-item">
+            <a ui-sref="spamWords">
+                <i class="icon-home"></i>
+                <span class="title">Spam Words</span>
+            </a>
+        </li> -->
+
+        <!-- <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-settings"></i>
+                <span class="title"> Withdrawal </span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="cashoutRequest">
+                        <i class="icon-puzzle"></i> Cashout </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="pendingCashOut">
+                        <i class="icon-puzzle"></i> Pending Cashout </span>
+                    </a>
+                </li>
+                  <li>
+                    <a ui-sref="approveCashout">
+                        <i class="icon-puzzle"></i> Approve Cashout </span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="cashoutHistory">
+                        <i class="icon-puzzle"></i> Cashout History</span>
+                    </a>
+                </li>
+            </ul>
+        </li> -->
+
+
+
+        <!-- <li class="nav-item">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-wrench"></i>
+                <span class="title">jQuery Plugins</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a ui-sref="formtools">
+                        <i class="icon-puzzle"></i> Form Tools </a>
+                </li>
+                <li>
+                    <a ui-sref="pickers">
+                        <i class="icon-calendar"></i> Date & Time Pickers </a>
+                </li>
+                <li>
+                    <a ui-sref="dropdowns">
+                        <i class="icon-refresh"></i> Custom Dropdowns </a>
+                </li>
+                <li>
+                    <a ui-sref="tree">
+                        <i class="icon-share"></i> Tree View </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-briefcase"></i> Datatables
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a ui-sref="datatablesadvanced">
+                                <i class="icon-tag"></i> Managed Datatables </a>
+                        </li>
+                        <li>
+                            <a ui-sref="datatablesajax">
+                                <i class="icon-refresh"></i> Ajax Datatables </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="profile.dashboard" id="sidebar_menu_link_profile">
+                <i class="icon-user"></i>
+                <span class="title">User Profile</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="todo">
+                <i class="icon-check"></i>
+                <span class="title">Task & Todo</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a ui-sref="blank">
+                <i class="icon-refresh"></i>
+                <span class="title">Blank Page</span>
+            </a>
+        </li> -->
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>

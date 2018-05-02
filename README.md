@@ -1,1 +1,4 @@
-# magic_touch
+## MagicTouchGame
+
+Itsa  client project.
+

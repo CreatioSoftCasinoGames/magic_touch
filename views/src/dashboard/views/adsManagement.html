@@ -1,0 +1,60 @@
+
+
+<!-- BEGIN PAGE HEADER-->
+<h1 class="page-title"> </h1>
+<div class="page-bar" >
+  <ul class="page-breadcrumb">
+    <li>
+      <i class="icon-home"></i>
+      <a ui-sref="dashboard">Home</a>
+      <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+      <span>Ads Management</span>
+      <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+      <span>Ads Management</span>
+    </li>
+  </ul>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN SAMPLE TABLE PORTLET-->
+    <div class="portlet box green" >
+      <div class="portlet-title">
+        <div class="caption">
+          Ads Management
+        </div>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form class="form-horizontal" role="form" name="adsForm" ng-submit="submit()">
+        <div class="form-group" ng-class="{ 'has-error' : adsForm.isAdsVisible.$invalid && !adsForm.isAdsVisible.$pristine}">
+          <label class="col-md-3 control-label">Ads Management Status :</label>
+          <div class="col-md-5">
+            <select class="form-control" name="isAdsVisible" ng-model="formData.isAdsVisible" ng-change="checkTime();" required>
+              <option value="" style="display:none;">Select Status</option>
+              <option value="true">ON</option>
+              <option value="false" ng-selected="true" >OFF</option>
+            </select>
+            <p ng-show="adsForm.isAdsVisible.$invalid && !adsForm.isAdsVisible.$pristine" class="help-block">Please select a Option.</p>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-12">
+              <button type="button" ui-sref="dashboard" class="btn default">Cancel</button>&nbsp&nbsp&nbsp&nbsp
+              <button type="submit" class="btn green" ng-disabled="adsForm.$invalid">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- END SAMPLE TABLE PORTLET-->
+</div>
+</div>
+
