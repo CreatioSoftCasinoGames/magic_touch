@@ -50,17 +50,10 @@ router.get('/getAdsStatus',function(req,res){
   adsManagement.getAdsStatus(req, res);
 });
 
-// router.get('./getConfiguration', function(req, res){
-//   console.log("\n\n\n\n----------req.body", req.body)
-//   adsManagement.getConfig(req.body,function getRank(err,result) {
-//     if(err){
-//       console.log('Error in getRank',err);
-//       res.status(500).send(err);
-//     }else{
-//       console.log('getRank success');
-//       res.send(result)
-//     }
-//   })
-// })
+
+router.get('/getConfig', function(req, res){
+  levelTime.getAll(req, res);
+
+})
 
 module.exports = router;

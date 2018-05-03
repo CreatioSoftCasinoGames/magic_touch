@@ -11,8 +11,14 @@ const connection = require('../dbConnection/connection.js');
 /**
  * Get port from environment and store in Express.
  */
+console.log('==argv========',process.argv[process.argv.length-1])
 
-var port = normalizePort(process.env.PORT || '3010');
+if (['prod', 'production'].indexOf(process.argv[process.argv.length-1])>=0) {
+  var port = normalizePort(process.env.PORT || '3010');
+} else {
+  var port = normalizePort(process.env.PORT || '8010');
+}
+
 console.log('==PORT========',port)
 app.set('port', port);
 

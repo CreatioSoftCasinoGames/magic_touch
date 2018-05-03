@@ -11,15 +11,6 @@ angular.module('MetronicApp').controller('adsManagementController', function($lo
    
   $scope.formData = {};
   $scope.formData.isAdsVisible = 'false';
-  $scope.checkTime = function(){
-    if($scope.formData.isAdsVisible == "true"){
-       $scope.toggleTime =  true;
-    }
-    if($scope.formData.isAdsVisible == "false"){
-       $scope.toggleTime =  false;
-       $scope.formData.levelTime = 0;
-    }
-  };
 
 
   $scope.submit = function(){
@@ -45,7 +36,6 @@ angular.module('MetronicApp').controller('adsManagementController', function($lo
         if(res.success){
           console.log("--------", res);
           $scope.formData.isAdsVisible = res.result.isAdsVisible;
-          $scope.toggleTime = 'true';
         }else{
           swal(res.info);
         }
